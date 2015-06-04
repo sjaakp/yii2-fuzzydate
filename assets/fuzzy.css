@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.ui-widget,
+.ui-widget input {
+    font-family: inherit;
+    font-size: 14px;
+}
+.ui-widget .input-lg {
+    font-size: 18px;
+}
+.ui-widget .input-sm {
+    font-size: 12px;
+}
