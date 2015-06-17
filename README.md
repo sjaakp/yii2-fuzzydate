@@ -77,11 +77,11 @@ A demonstration of the **Yii2 Fuzzydate** suit is [here](http://www.sjaakprieste
 
 The preferred way to install **Yii2 Fuzzydate** is through [Composer](https://getcomposer.org/). Either add the following to the require section of your `composer.json` file:
 
-`"sjaakp/fuzzydate": "*"` 
+`"sjaakp/yii2-fuzzydate": "*"` 
 
 Or run:
 
-`$ php composer.phar require sjaakp/fuzzydate "*"` 
+`$ php composer.phar require sjaakp/yii2-fuzzydate "*"` 
 
 You can manually install **Yii2 Fuzzydate** by [downloading the source in ZIP-format](https://github.com/sjaakp/yii2-fuzzydate/archive/master.zip).
 
