@@ -58,8 +58,8 @@ class DatePicker extends InputWidget {
         $view->registerJs("fuzzyReg();");
 
         $id = Html::getInputId($this->model, $this->attribute);
+        $val = Html::getAttributeValue($this->model, $this->attribute);
 
-        $val = $this->model->{$this->attribute};
         if ($val && is_array($val))   {
             $y = $val['y'];
             if ($y) {
