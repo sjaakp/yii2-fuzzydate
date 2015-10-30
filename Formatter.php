@@ -1,8 +1,8 @@
 <?php
 /**
  * MIT licence
- * Version 1.0
- * Sjaak Priester, Amsterdam 04-06-2015.
+ * Version 1.0.1
+ * Sjaak Priester, Amsterdam 04-06-2015 ... 30-10-2015.
  *
  * Formatter class, extends Yii's standard formatter yii\i18n\Formatter.
  * Use this by setting it as component in the configuration file (often config/web.php, or config/main.php) like:
@@ -129,9 +129,11 @@ class Formatter extends \yii\i18n\Formatter {
         }
         if (! $formatter) $formatter = new IntlDateFormatter($this->locale, IntlDateFormatter::NONE, IntlDateFormatter::NONE);
 
-        $formatter->setPattern($pattern);
-
-
-        return $formatter->format($dt);
+        // New in 1.0.1 : fall back to PHP if 32 bits and 'extreme' date
+        if (PHP_INT_SIZE > 4 || ($value['y'] > 1901 && $value['y'] < 2038))  {
+            $formatter->setPattern($pattern);
+            return $formatter->format($dt);
+        }
+        else return $dt->format(FormatConverter::convertDateIcuToPhp($pattern));
     }
 }
