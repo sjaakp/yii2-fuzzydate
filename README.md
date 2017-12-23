@@ -3,13 +3,13 @@ Yii2 Fuzzydate
 
 Often, when working with dates, data are incomplete. For instance, one might know that a person is born in 1980, or in April, 1980, but not on which day exactly.
 
-I call these dates *fuzzy dates*. Here are a few classes to work with them in the Yii 2.0 PHP framework.
+I call these dates *fuzzy dates*. Here are a few classes to work with them in the Yii 2.x PHP framework.
 
 ## Fuzzy date representation ##
 
 ### In the database ###
 
-In the database each fuzzy date is represented by **two** 'normal' dates. The field names of the two dates is derived from the attribute name of the fuzzy date, by appending `'1'` and `'2'` respectively. 
+In the database each fuzzy date is represented by **two** 'normal' dates. The field names of the two dates are derived from the attribute name of the fuzzy date, by appending `'1'` and `'2'` respectively. 
 
 So, if the attribute name of the fuzzy date is `'born'`, the fields representing is in the database would be `'born1'` and `'born2'`.
 
@@ -81,7 +81,7 @@ The preferred way to install **Yii2 Fuzzydate** is through [Composer](https://ge
 
 Or run:
 
-`$ php composer.phar require sjaakp/yii2-fuzzydate "*"` 
+`composer require sjaakp/yii2-fuzzydate "*"` 
 
 You can manually install **Yii2 Fuzzydate** by [downloading the source in ZIP-format](https://github.com/sjaakp/yii2-fuzzydate/archive/master.zip).
 
@@ -119,7 +119,7 @@ A class `Hero` with fuzzy date attributes `'born'` and `'died'` should have data
 		// ...
 	}
 
-After that, class `Hero` has two 'virtual attributes, `'born'`, and `'died'`.
+After that, class `Hero` has two 'virtual attributes', `'born'`, and `'died'`.
 
 **Notice:** Don't forget to declare the attributes *safe* in the method `rules()`.
 
@@ -150,7 +150,7 @@ Use this by setting it as component in the application's  configuration file (of
 
           'components' => [
               // ... other components ...
-              [
+              'formatter' => [
                   'class' => 'sjaakp\fuzzydate\Formatter'
               ],
               /// ..
@@ -196,7 +196,7 @@ The text `'fuzzyDate'` is case independent. `'fuzzydate'` works as well.
 
 #### $fuzzyDateFormat ####
 
- - if string: `'short'`, `'medium'`, `'long'`, or `'full'`. **Formatter** tries to figure out the formatting of a fuzzy date based on the formatting of a standard date. With most locales, this works OK, however with some locales the results are less satisfying.
+- if string: `'short'`, `'medium'`, `'long'`, or `'full'`. **Formatter** tries to figure out the formatting of a fuzzy date based on the formatting of a standard date. With most locales, this works OK, however with some locales the results are less satisfying.
 - if array: the keys are `'full'`, `'month'`, and `'year'`, corresponding to the granularity of the fuzzy date. The values are [ICU date formats](http://userguide.icu-project.org/formatparse/datetime#TOC-Date-Time-Format-Syntax "ICU user guide"). Example:
 
     	[
@@ -221,7 +221,7 @@ Formats a fuzzy date, as delivered by a Model with a **FuzzyDateBehavior**.
 
 ## DatePicker ##
 
-This is an input widget to handle fuzzy dates. It consists of a spin control for the year, a dropdown list for the month, and a datepicker for the day. Both month and day can be blank, indicating an incomplete date.
+This is an input widget to handle fuzzy dates. It consists of a spin control for the year, a dropdown list for the month, a datepicker for the day, and optionally a 'Today'-button. Both month and day can be blank, indicating an incomplete date.
 
 **DatePicker** has all the attributes and methods of an [**InputWidget**](http://www.yiiframework.com/doc-2.0/yii-widgets-inputwidget.html "Yii 2.0 API") plus the following.
 
@@ -244,6 +244,16 @@ Sets the format of the month names in the dropdown list.
 - `'%m'` two digits
 
 These are format strings from PHP's [strftime()](http://php.net/manual/en/function.strftime.php "PHP API") function.
+
+#### $today ####
+
+Options for the 'Today'-button.
+
+- If `string`: the text for the 'Today'-button. This will not be HTML-encoded before it's rendered.
+- If `array`: HTML options for the 'Today'-button. The arry value with the key `'content'` will be displayed as text and will not be HTML-encoded; other options will.
+- If `null`: no 'Today'-button is rendered.
+
+Default: `'Today'`.
 
 ### Usage ###
 

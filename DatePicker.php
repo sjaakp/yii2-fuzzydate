@@ -1,8 +1,8 @@
 <?php
 /**
  * MIT licence
- * Version 1.0
- * Sjaak Priester, Amsterdam 04-06-2015.
+ * Version 1.1.0
+ * Sjaak Priester, Amsterdam 04-06-2015, 23-12-2017.
 
  * Input widget to handle fuzzy dates. Consists of a spin control for the year, a dropdown list for the month,
  * and a datepicker for the day. Both month and day can be blank.
@@ -10,9 +10,7 @@
 
 namespace sjaakp\fuzzydate;
 
-use Yii;
 use yii\helpers\Html;
-use yii\web\View;
 use yii\widgets\InputWidget;
 use yii\base\InvalidConfigException;
 
@@ -44,6 +42,14 @@ class DatePicker extends InputWidget {
      */
     public $monthFormat = '%B';
 
+    /**
+     * @var string | array | null
+     * - If string: text for 'Today' button, will not be HTML encoded
+     * - If array: HTML options for button. Member with key 'content' is button text, will not be HTML encoded; other options will
+     * - If null, no 'Today'-button is displayed
+     */
+    public $today = 'Today';
+
 
     public function run()   {
         if (! $this->hasModel() || ! $this->attribute)    {
@@ -56,22 +62,6 @@ class DatePicker extends InputWidget {
         $asset->register($view);
 
         $view->registerJs("fuzzyReg();");
-
-        $id = Html::getInputId($this->model, $this->attribute);
-        $val = Html::getAttributeValue($this->model, $this->attribute);
-
-        if ($val && is_array($val))   {
-            $y = $val['y'];
-            if ($y) {
-                $m = $val['m'];
-                if (! $m) $m = 'null';
-                $d = $val['d'];
-                if (! $d) $d = 'null';
-
-                // Call this after initializing jQuery-objects
-                $view->registerJs("fuzzySet('$id', $y, $m, $d);", View::POS_LOAD);
-            }
-        }
 
         if (! $this->minYear) $this->minYear = date('Y');
         if (! $this->maxYear) $this->maxYear = date('Y');

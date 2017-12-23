@@ -11,3 +11,9 @@
 .ui-widget .input-sm {
     font-size: 12px;
 }
+.fuzzy-month {
+    margin-left: -2px;
+}
+.fuzzy-today {
+    margin-left: .6em;
+}
