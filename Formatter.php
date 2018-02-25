@@ -27,7 +27,7 @@
 namespace sjaakp\fuzzydate;
 
 use Yii;
-use yii\base\InvalidParamException;
+use yii\base\InvalidArgumentException;
 use yii\base\NotSupportedException;
 use yii\helpers\FormatConverter;
 use IntlDateFormatter;
@@ -71,7 +71,7 @@ class Formatter extends \yii\i18n\Formatter {
         }
 
         if (! is_array($value)) {
-            throw new InvalidParamException('Formatting fuzzy date failed.');
+            throw new InvalidArgumentException('Formatting fuzzy date failed.');
         }
         if (! extension_loaded('intl')) {   // can't use $this->_intlLoaded (private)
             throw new NotSupportedException('Extension \'Intl\' not loaded');

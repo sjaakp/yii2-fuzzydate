@@ -10,7 +10,6 @@
 
 namespace sjaakp\fuzzydate;
 
-use yii\helpers\Html;
 use yii\widgets\InputWidget;
 use yii\base\InvalidConfigException;
 

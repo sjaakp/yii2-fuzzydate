@@ -11,6 +11,7 @@ I call these dates *fuzzy dates*. Here are a few classes to work with them in th
 
 In the database each fuzzy date is represented by **two** 'normal' dates. The field names of the two dates are derived from the attribute name of the fuzzy date, by appending `'1'` and `'2'` respectively. 
 
+
 So, if the attribute name of the fuzzy date is `'born'`, the fields representing is in the database would be `'born1'` and `'born2'`.
 
 - If we know the date exactly, the value of both date fields is equal.
