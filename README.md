@@ -109,7 +109,7 @@ A class `Hero` with fuzzy date attributes `'born'` and `'died'` should have data
     	{
 	        return [
 	            'fuzzydate' => [
-	                'class' => FuzzyDateBehavior::className(),
+	                'class' => FuzzyDateBehavior::class,
 					'attributes'=> [
 						'born',
 						'died'
