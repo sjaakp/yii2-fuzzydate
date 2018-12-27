@@ -12,7 +12,7 @@ I call these dates *fuzzy dates*. Here are a few classes to work with them in th
 In the database each fuzzy date is represented by **two** 'normal' dates. The field names of the two dates are derived from the attribute name of the fuzzy date, by appending `'1'` and `'2'` respectively. 
 
 
-So, if the attribute name of the fuzzy date is `'born'`, the fields representing is in the database would be `'born1'` and `'born2'`.
+So, if the attribute name of the fuzzy date is `'born'`, the fields representing it in the database would be `'born1'` and `'born2'`.
 
 - If we know the date exactly, the value of both date fields is equal.
 - If we know the date with a 'granularity' of one month, the value of the first field is the first day of the month, the value of the second field is the last day of the month.
@@ -251,7 +251,7 @@ These are format strings from PHP's [strftime()](http://php.net/manual/en/functi
 Options for the 'Today'-button.
 
 - If `string`: the text for the 'Today'-button. This will not be HTML-encoded before it's rendered.
-- If `array`: HTML options for the 'Today'-button. The arry value with the key `'content'` will be displayed as text and will not be HTML-encoded; other options will.
+- If `array`: HTML options for the 'Today'-button. The array value with the key `'content'` will be displayed as text and will not be HTML-encoded; other options will.
 - If `null`: no 'Today'-button is rendered.
 
 Default: `'Today'`.
