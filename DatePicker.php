@@ -1,8 +1,8 @@
 <?php
 /**
  * MIT licence
- * Version 1.1.0
- * Sjaak Priester, Amsterdam 04-06-2015, 23-12-2017.
+ * Version 1.2.0
+ * Sjaak Priester, Amsterdam 04-06-2015...24-04-2017.
 
  * Input widget to handle fuzzy dates. Consists of a spin control for the year, a dropdown list for the month,
  * and a datepicker for the day. Both month and day can be blank.
@@ -49,7 +49,10 @@ class DatePicker extends InputWidget {
      */
     public $today = 'Today';
 
-
+    /**
+     * @return string|void
+     * @throws InvalidConfigException
+     */
     public function run()   {
         if (! $this->hasModel() || ! $this->attribute)    {
             throw new InvalidConfigException('Fuzzydate DatePicker must have model and attribute.');
