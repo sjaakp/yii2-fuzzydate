@@ -260,7 +260,7 @@ Default: `'Today'`.
 
 Use **DatePicker** like any other InputWidget. Example:
 
-	<?= $form->field($model, 'date')->widget(DatePicker::className(), [
+	<?= $form->field($model, 'date')->widget(DatePicker::class, [
 	    'minYear' => 1970,
 	]) ?>
 
