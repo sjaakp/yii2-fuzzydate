@@ -1,6 +1,10 @@
 Yii2 Fuzzydate
 ============
 
+[![Latest Stable Version](https://poser.pugx.org/sjaakp/yii2-fuzzydate/v/stable)](https://packagist.org/packages/sjaakp/yii2-fuzzydate)
+[![Total Downloads](https://poser.pugx.org/sjaakp/yii2-fuzzydate/downloads)](https://packagist.org/packages/sjaakp/yii2-fuzzydate)
+[![License](https://poser.pugx.org/sjaakp/yii2-fuzzydate/license)](https://packagist.org/packages/sjaakp/yii2-fuzzydate)
+
 Often, when working with dates, data are incomplete. For instance, one might know that a person is born in 1980, or in April, 1980, but not on which day exactly.
 
 I call these dates *fuzzy dates*. Here are a few classes to work with them in the Yii 2.x PHP framework.

@@ -37,16 +37,14 @@ if ($today) {
     $todayContent = ArrayHelper::remove($today, 'content', 'Today');
 }
 ?>
-
 <div class="form-group">
-    <div class="form-inline">
+    <div class="form-inline flex-nowrap">
         <?= Html::activeInput('number', $model, "{$attribute}[y]", [
             'class' => 'fuzzy-year ' . $widget->controlClass,
             'size' => 4,
             'min' => $widget->minYear,
             'max' => $widget->maxYear
         ]) ?>
-
         <?= JuiDatePicker::widget([
             'model' => $model,
             'attribute' => "{$attribute}[p]",
@@ -55,21 +53,17 @@ if ($today) {
                 'style' => 'visibility:hidden;width:0;padding-left:0;padding-right:0;border-width:0',
             ],
         ]) ?>
-
         <?= Html::activeDropDownList($model, "{$attribute}[m]", $months, [
             'prompt' => '',
             'class' => 'fuzzy-month ' . $widget->controlClass,
             'encode' => false
         ]) ?>
-
         <?= Html::activeTextInput($model, "{$attribute}[d]", [
             'size' => 2,
             'class' => 'fuzzy-day ' . $widget->controlClass,
         ]) ?>
-
         <?php if ($today): ?>
         <?= Html::button($todayContent, $today) ?>
         <?php endif; ?>
-
     </div>
 </div>
