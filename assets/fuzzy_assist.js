@@ -2,10 +2,9 @@
 /*jslint nomen: true, unparam: true, white: true */
 /**
  * MIT licence
- * Version 1.1.0
- * Sjaak Priester, Amsterdam 04-06-2015, 19-12-2017.
+ * Version 1.2-2
+ * Sjaak Priester, Amsterdam 04-06-2015, 19-12-2017 ... 23-12-2019.
  */
-
 
 /**
  *
@@ -26,7 +25,6 @@ function fuzzyEnableElement(elmt_id, bEnable)  {
 }
 
 /**
- *
  * @param elmt   input element
  * @param yy    year (hack for first spin step after empty y)
  */
@@ -51,26 +49,10 @@ function fuzzyEnable(elmt, yy) {
 function fuzzyReg()  {
     "use strict";
 
-    $('.fuzzy-year').on('spin',function(e, ui) {
-        fuzzyEnable(this, ui.value);
-    })
-        .on('input', function(e) {
-            var me = $(this),
-                v = +me.val();      // clever way to convert to integer
-            
-            if (v >= +me.attr('aria-valuemin') && v <= +me.attr('aria-valuemax'))   {
-                fuzzyEnable(this);
-            }
-    })
-        .keydown( function(e) {
-            if (e.which === 8 || e.which === 46) {  // backspace, delete
-                $(this).val('');
-                fuzzyEnable(this);
-            }
-        }
-    )
-        .each(function(i, elmt) {
-            fuzzyEnable(elmt);
+    $('.fuzzy-year').on('input', function(e) {
+        fuzzyEnable(this);
+    }).each(function(i, elmt) {
+             fuzzyEnable(elmt);
     });
 
     $('.fuzzy-month').change(function(e) {
@@ -78,7 +60,7 @@ function fuzzyReg()  {
     });
 
     $('.fuzzy-day').keydown( function(e) {
-        if (e.which === 8 || e.which === 46)  {
+        if (e.code === 'Backspace' || e.code === 'Delete')  {
             $(this).val('');
             $('#' + this.id.slice(0, -1) + 'p').datepicker('setDate', null);
         }
@@ -118,5 +100,4 @@ function fuzzyReg()  {
         $(base_id + 'd').val(d.getDate());
         fuzzyEnable(this);
     });
-
 }

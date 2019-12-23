@@ -14,6 +14,8 @@ class DatePickerAsset extends AssetBundle {
         'yii\jui\JuiAsset',
     ];
 
+    public $sourcePath = __DIR__ . DIRECTORY_SEPARATOR . 'assets';
+
     public $css = [
         'fuzzy.css'
     ];
@@ -21,7 +23,7 @@ class DatePickerAsset extends AssetBundle {
     public function init()    {
         parent::init();
 
-        $this->sourcePath = __DIR__ . DIRECTORY_SEPARATOR . 'assets';
         $this->js[] = YII_DEBUG ? 'fuzzy_assist.js' : 'fuzzy_assist.min.js';
+        $this->publishOptions['forceCopy'] = YII_DEBUG;
     }
 }
