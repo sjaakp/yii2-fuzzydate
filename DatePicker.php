@@ -1,8 +1,8 @@
 <?php
 /**
  * MIT licence
- * Version 1.2.0
- * Sjaak Priester, Amsterdam 04-06-2015...24-04-2017.
+ * Version 1.2.3
+ * Sjaak Priester, Amsterdam 04-06-2015...01-05-2022.
 
  * Input widget to handle fuzzy dates. Consists of a spin control for the year, a dropdown list for the month,
  * and a datepicker for the day. Both month and day can be blank.
@@ -37,9 +37,10 @@ class DatePicker extends InputWidget {
     /**
      * @var string
      * Month format of dropdown list
-     * '%B' (default) long name, '%b' short month name, '%m' two digits
+     * 'LLLL' long name, 'LLL' short month name, 'LL' two digits ('stand-alone month in year')
+     * @link https://unicode-org.github.io/icu/userguide/format_parse/datetime/
      */
-    public $monthFormat = '%B';
+    public $monthFormat = 'LLLL';
 
     /**
      * @var string | array | null

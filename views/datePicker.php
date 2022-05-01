@@ -20,11 +20,14 @@ $model = $widget->model;
 $attribute = $widget->attribute;
 $inputId = Html::getInputId($model, $attribute);
 
-// @link https://stackoverflow.com/questions/8993971/php-strftime-french-characters
-setlocale(LC_ALL, Yii::$app->language . '.' . Yii::$app->charset); // need this for strftime()
-
 $months = [];
-for ($m = 1; $m <= 12; $m++) $months[$m] = strftime($widget->monthFormat, mktime(0, 0, 0, $m, 1));
+$di = new DateInterval('P1M');
+$dt = new DateTime('1/1/2000'); // just a random year, we're only interested in month names
+
+for ($m = 1; $m <= 12; $m++) {
+    $months[$m] = Yii::$app->formatter->asDate($dt, $widget->monthFormat);
+    $dt->add($di);
+}
 
 $today = $widget->today;
 $todayContent = '';

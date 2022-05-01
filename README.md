@@ -202,13 +202,15 @@ The text `'fuzzyDate'` is case independent. `'fuzzydate'` works as well.
 #### $fuzzyDateFormat ####
 
 - if string: `'short'`, `'medium'`, `'long'`, or `'full'`. **Formatter** tries to figure out the formatting of a fuzzy date based on the formatting of a standard date. With most locales, this works OK, however with some locales the results are less satisfying.
-- if array: the keys are `'full'`, `'month'`, and `'year'`, corresponding to the granularity of the fuzzy date. The values are [ICU date formats](http://userguide.icu-project.org/formatparse/datetime#TOC-Date-Time-Format-Syntax "ICU user guide"). Example:
+- if array: the keys are `'full'`, `'month'`, and `'year'`, corresponding 
+to the granularity of the fuzzy date. The values are
+[ICU date formats](https://unicode-org.github.io/icu/userguide/format_parse/datetime/#date-field-symbol-table "ICU user guide"). Example:
 
-    	[
-    		'full' => 'MM/dd/yyyy',
-        	'month' => 'MM/yyyy',
-        	'year' => 'yyyy'
-    	]
+        [
+            'full' => 'MM/dd/yyyy',
+            'month' => 'MM/yyyy',
+            'year' => 'yyyy'
+        ]
 
 The default value for **$fuzzyDateFormat** is `'medium'`.
 
@@ -244,11 +246,11 @@ Set this to the (*Bootstrap*) class(es) for the control elements. Example: for l
 
 Sets the format of the month names in the dropdown list.
 
-- `'%B'` (default) long name
-- `'%b'` short name
-- `'%m'` two digits
+- `'LLLL'` (default) long name
+- `'LLL'` short name
+- `'LL'` two digits
 
-These are format strings from PHP's [strftime()](http://php.net/manual/en/function.strftime.php "PHP API") function.
+These are [ICU format strings](https://unicode-org.github.io/icu/userguide/format_parse/datetime/#date-field-symbol-table "ICU user guide").
 
 #### $today ####
 
